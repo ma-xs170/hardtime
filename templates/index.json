@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "tiles": {
+      "type": "collection-tiles",
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "label": "Vêtements" } },
+        "t2": { "type": "tile", "settings": { "label": "Montres" } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "featured": { "type": "featured-collection" },
+    "story": { "type": "image-with-text" },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "title": "Authenticité garantie", "text": "Chaque pièce est vérifiée avant expédition." } },
+        "b2": { "type": "item", "settings": { "title": "État détaillé", "text": "Photos réelles et grade d'état sur chaque article." } },
+        "b3": { "type": "item", "settings": { "title": "Livraison assurée", "text": "Colis suivi et assuré, emballage soigné." } },
+        "b4": { "type": "item", "settings": { "title": "Retours 14 jours", "text": "Un doute ? Renvoyez, remboursé." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    }
+  },
+  "order": ["hero", "tiles", "featured", "story", "trust"]
+}

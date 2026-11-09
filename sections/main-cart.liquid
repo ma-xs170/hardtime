@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container container--narrow">
+    <h1 class="page-head__title">{{ 'cart.title' | t }}</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <p>{{ 'cart.empty' | t }}</p>
+      <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        <ul class="cart">
+          {%- for item in cart.items -%}
+            <li class="cart__item">
+              <a class="cart__media" href="{{ item.url }}">
+                {%- if item.image -%}{{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.image.alt | escape }}{%- endif -%}
+              </a>
+              <div class="cart__body">
+                <a class="cart__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                {%- unless item.product.has_only_default_variant -%}<p class="muted">{{ item.variant.title }}</p>{%- endunless -%}
+                <p>{{ item.final_price | money }}</p>
+              </div>
+              <div class="cart__qty">
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantité">
+                <a class="link muted" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+              </div>
+              <div class="cart__total">{{ item.final_line_price | money }}</div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <div class="cart__footer">
+          <p class="cart__subtotal"><span>{{ 'cart.subtotal' | t }}</span> <strong>{{ cart.total_price | money }}</strong></p>
+          <p class="muted">{{ 'cart.taxes_shipping' | t }}</p>
+          <button class="btn btn--ghost btn--block" type="submit" name="update">{{ 'cart.update' | t }}</button>
+          <button class="btn btn--block" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Panier", "settings": [] }
+{% endschema %}

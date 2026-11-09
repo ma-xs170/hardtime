@@ -1,0 +1,52 @@
+{
+  "general": {
+    "skip_to_content": "Aller au contenu",
+    "tagged": "Étiquette {{ tags }}",
+    "search": "Rechercher",
+    "cart": "Panier",
+    "menu": "Menu",
+    "close": "Fermer",
+    "from": "À partir de",
+    "sale": "Promo",
+    "sold_out": "Vendu",
+    "continue_shopping": "Continuer mes achats",
+    "view_all": "Tout voir"
+  },
+  "product": {
+    "add_to_cart": "Ajouter au panier",
+    "sold_out": "Vendu",
+    "condition": "État",
+    "authentic": "Authenticité garantie",
+    "shipping": "Expédition suivie et assurée",
+    "returns": "Retours sous 14 jours"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide",
+    "subtotal": "Sous-total",
+    "checkout": "Commander",
+    "taxes_shipping": "Taxes et frais de livraison calculés à l'étape suivante.",
+    "remove": "Retirer",
+    "update": "Mettre à jour"
+  },
+  "collection": {
+    "empty": "Aucun produit trouvé",
+    "items": "articles",
+    "sort_by": "Trier par",
+    "filter": "Filtrer"
+  },
+  "search": {
+    "title": "Recherche",
+    "placeholder": "Rechercher un produit",
+    "no_results": "Aucun résultat pour « {{ terms }} »"
+  },
+  "newsletter": {
+    "email": "E-mail",
+    "subscribe": "S'inscrire",
+    "success": "Merci pour votre inscription !"
+  },
+  "404": {
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas."
+  }
+}

@@ -1,0 +1,96 @@
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign mf = product.metafields.custom
+-%}
+<section class="container pdp" data-product data-product-url="{{ product.url }}">
+  <div class="pdp__gallery">
+    {%- for media in product.media -%}
+      <div class="pdp__slide">
+        {%- if media.media_type == 'image' -%}
+          {%- liquid
+            assign load = 'lazy'
+            if forloop.first
+              assign load = 'eager'
+            endif
+          -%}
+          {{ media.preview_image | image_url: width: 1400 | image_tag:
+            loading: load, widths: '600, 900, 1200, 1400',
+            sizes: '(min-width: 990px) 55vw, 100vw', alt: media.alt | default: product.title }}
+        {%- else -%}
+          {{ media | media_tag: image_size: '1400x', controls: true }}
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="pdp__slide">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+    {%- endfor -%}
+  </div>
+
+  <div class="pdp__info">
+    {%- if product.vendor != blank -%}<p class="eyebrow">{{ product.vendor }}</p>{%- endif -%}
+    <h1 class="pdp__title">{{ product.title }}</h1>
+    <div data-price>{% render 'price', product: product %}</div>
+
+    {%- if mf.condition != blank -%}
+      <p class="pdp__condition"><span class="muted">{{ 'product.condition' | t }} :</span> <strong>{{ mf.condition }}</strong></p>
+    {%- endif -%}
+
+    {%- form 'product', product, class: 'pdp__form', data-product-form: '' -%}
+      <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <fieldset class="opt" data-option>
+            <legend>{{ option.name }}</legend>
+            <div class="opt__values">
+              {%- for value in option.values -%}
+                <label class="opt__pill">
+                  <input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                  <span>{{ value }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endfor -%}
+      {%- endunless -%}
+
+      <button class="btn btn--block" type="submit" data-add {% unless current.available %}disabled{% endunless %}>
+        {%- if current.available -%}{{ 'product.add_to_cart' | t }}{%- else -%}{{ 'product.sold_out' | t }}{%- endif -%}
+      </button>
+    {%- endform -%}
+
+    <ul class="pdp__perks">
+      <li>{{ 'product.authentic' | t }}</li>
+      <li>{{ 'product.shipping' | t }}</li>
+      <li>{{ 'product.returns' | t }}</li>
+    </ul>
+
+    {%- if product.description != blank -%}
+      <div class="rte pdp__desc">{{ product.description }}</div>
+    {%- endif -%}
+
+    {%- assign has_specs = false -%}
+    {%- if mf.reference != blank or mf.year != blank or mf.case_size != blank or mf.movement != blank or mf.box_papers != blank -%}{%- assign has_specs = true -%}{%- endif -%}
+    {%- if has_specs -%}
+      <dl class="specs">
+        {%- if mf.reference != blank -%}<dt>Référence</dt><dd>{{ mf.reference }}</dd>{%- endif -%}
+        {%- if mf.year != blank -%}<dt>Année</dt><dd>{{ mf.year }}</dd>{%- endif -%}
+        {%- if mf.case_size != blank -%}<dt>Boîtier</dt><dd>{{ mf.case_size }}</dd>{%- endif -%}
+        {%- if mf.movement != blank -%}<dt>Mouvement</dt><dd>{{ mf.movement }}</dd>{%- endif -%}
+        {%- if mf.box_papers != blank -%}<dt>Boîte &amp; papiers</dt><dd>{{ mf.box_papers }}</dd>{%- endif -%}
+      </dl>
+    {%- endif -%}
+  </div>
+
+  <script type="application/json" data-variants>{{ product.variants | json }}</script>
+</section>
+
+<script type="application/ld+json">
+{{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Produit",
+  "settings": []
+}
+{% endschema %}

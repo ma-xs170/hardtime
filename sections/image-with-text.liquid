@@ -1,0 +1,37 @@
+<section class="section">
+  <div class="container split split--{{ section.settings.layout }}">
+    <div class="split__media">
+      {%- if section.settings.image -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 750px) 50vw, 100vw' }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="split__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="section__title">{{ section.settings.title }}</h2>
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.settings.button_label != blank -%}
+        <a class="btn" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image + texte",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Notre process" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Sourcé. Vérifié. Revendu." },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Chaque article passe par un contrôle d'authenticité et d'état avant d'être mis en ligne.</p>" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "En savoir plus" },
+    { "type": "url", "id": "button_link", "label": "Lien" },
+    { "type": "select", "id": "layout", "label": "Disposition", "default": "image-left", "options": [
+      { "value": "image-left", "label": "Image à gauche" }, { "value": "image-right", "label": "Image à droite" }
+    ]}
+  ],
+  "presets": [{ "name": "Image + texte" }]
+}
+{% endschema %}

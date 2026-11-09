@@ -1,0 +1,52 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Hardtime",
+    "theme_version": "1.0.0",
+    "theme_author": "ma-xs170",
+    "theme_documentation_url": "https://github.com/ma-xs170/hardtime",
+    "theme_support_url": "https://github.com/ma-xs170/hardtime/issues"
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#ffffff" },
+      { "type": "color", "id": "color_surface", "label": "Surface (cartes, blocs)", "default": "#f5f4f1" },
+      { "type": "color", "id": "color_text", "label": "Texte", "default": "#111111" },
+      { "type": "color", "id": "color_accent", "label": "Accent (boutons)", "default": "#111111" },
+      { "type": "color", "id": "color_accent_text", "label": "Texte sur accent", "default": "#ffffff" }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      { "type": "font_picker", "id": "font_heading", "label": "Titres", "default": "helvetica_n7" },
+      { "type": "font_picker", "id": "font_body", "label": "Texte", "default": "helvetica_n4" }
+    ]
+  },
+  {
+    "name": "Mise en page",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Largeur max", "min": 1000, "max": 1800, "step": 50, "unit": "px", "default": 1400 },
+      { "type": "range", "id": "radius", "label": "Arrondi", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 0 }
+    ]
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "range", "id": "logo_width", "label": "Largeur du logo", "min": 50, "max": 300, "step": 10, "unit": "px", "default": 120 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Revente",
+    "settings": [
+      { "type": "header", "content": "Badges d'état" },
+      { "type": "paragraph", "content": "Créez le metafield produit `custom.condition` (texte) : Neuf, Comme neuf, Très bon état, Bon état." },
+      { "type": "checkbox", "id": "show_condition", "label": "Afficher l'état sur les cartes produit", "default": true },
+      { "type": "checkbox", "id": "show_vendor", "label": "Afficher la marque sur les cartes produit", "default": true },
+      { "type": "checkbox", "id": "show_savings", "label": "Afficher le % de réduction", "default": true }
+    ]
+  }
+]

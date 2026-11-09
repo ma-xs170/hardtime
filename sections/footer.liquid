@@ -1,0 +1,48 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <p class="footer__name">{{ shop.name }}</p>
+      {%- if section.settings.tagline != blank -%}<p class="muted">{{ section.settings.tagline }}</p>{%- endif -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      <div class="footer__col" {{ block.shopify_attributes }}>
+        {%- if block.settings.title != blank -%}<h3 class="footer__title">{{ block.settings.title }}</h3>{%- endif -%}
+        <ul>
+          {%- for link in linklists[block.settings.menu].links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="container footer__bottom">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span class="footer__pay">
+      {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'icon-pay' }}{%- endfor -%}
+    </span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Slogan", "default": "Pièces choisies. Authentifiées. Revendues à leur juste prix." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Boutique" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [{ "type": "menu" }]
+  }
+}
+{% endschema %}

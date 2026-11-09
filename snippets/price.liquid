@@ -1,0 +1,21 @@
+{%- comment -%} Params: product {%- endcomment -%}
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+<div class="price{% if on_sale %} price--sale{% endif %}">
+  {%- if product.price_varies and on_sale == false -%}
+    <span class="price__current">{{ 'general.from' | t }} {{ product.price | money }}</span>
+  {%- else -%}
+    <span class="price__current">{{ product.price | money }}</span>
+  {%- endif -%}
+  {%- if on_sale -%}
+    <s class="price__compare">{{ product.compare_at_price | money }}</s>
+    {%- if settings.show_savings -%}
+      {%- assign pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+      <span class="price__pct">-{{ pct }}%</span>
+    {%- endif -%}
+  {%- endif -%}
+</div>

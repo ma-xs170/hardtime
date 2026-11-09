@@ -1,0 +1,52 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "tagged": "Tagged {{ tags }}",
+    "search": "Search",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close",
+    "from": "From",
+    "sale": "Sale",
+    "sold_out": "Sold out",
+    "continue_shopping": "Continue shopping",
+    "view_all": "View all"
+  },
+  "product": {
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "condition": "Condition",
+    "authentic": "Authenticity guaranteed",
+    "shipping": "Tracked & insured shipping",
+    "returns": "14-day returns"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "taxes_shipping": "Taxes and shipping calculated at checkout.",
+    "remove": "Remove",
+    "update": "Update cart"
+  },
+  "collection": {
+    "empty": "No products found",
+    "items": "items",
+    "sort_by": "Sort by",
+    "filter": "Filter"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products",
+    "no_results": "No results for “{{ terms }}”"
+  },
+  "newsletter": {
+    "email": "Email",
+    "subscribe": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "404": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist."
+  }
+}

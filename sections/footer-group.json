@@ -1,0 +1,9 @@
+{
+  "name": "Pied de page",
+  "type": "footer",
+  "sections": {
+    "newsletter": { "type": "newsletter" },
+    "footer": { "type": "footer" }
+  },
+  "order": ["newsletter", "footer"]
+}

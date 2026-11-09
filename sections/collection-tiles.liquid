@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container">
+    {%- if section.settings.title != blank -%}<h2 class="section__title">{{ section.settings.title }}</h2>{%- endif -%}
+    <div class="tiles">
+      {%- for block in section.blocks -%}
+        {%- assign c = block.settings.collection -%}
+        <a class="tile" href="{{ c.url | default: '#' }}" {{ block.shopify_attributes }}>
+          {%- assign img = block.settings.image | default: c.image -%}
+          {%- if img -%}
+            {{ img | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 750px) 50vw, 100vw', class: 'tile__img' }}
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag: 'tile__img placeholder' }}
+          {%- endif -%}
+          <span class="tile__label">{{ block.settings.label | default: c.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tuiles catégories",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Acheter par catégorie" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tuile",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image (sinon celle de la collection)" },
+        { "type": "text", "id": "label", "label": "Libellé" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Tuiles catégories", "blocks": [{ "type": "tile", "settings": { "label": "Vêtements" } }, { "type": "tile", "settings": { "label": "Montres" } }] }]
+}
+{% endschema %}

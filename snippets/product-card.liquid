@@ -1,0 +1,42 @@
+{%- comment -%} Params: product, eager (bool) {%- endcomment -%}
+{%- assign img_loading = 'lazy' -%}
+{%- if eager -%}{%- assign img_loading = 'eager' -%}{%- endif -%}
+<article class="card">
+  <a href="{{ product.url }}" class="card__link" aria-label="{{ product.title | escape }}">
+    <div class="card__media">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 800 | image_tag:
+          loading: img_loading,
+          widths: '300, 400, 600, 800',
+          sizes: '(min-width: 990px) 25vw, 50vw',
+          class: 'card__img card__img--main',
+          alt: product.featured_image.alt | default: product.title }}
+        {%- if product.images[1] -%}
+          {{ product.images[1] | image_url: width: 800 | image_tag:
+            loading: 'lazy',
+            widths: '300, 400, 600, 800',
+            sizes: '(min-width: 990px) 25vw, 50vw',
+            class: 'card__img card__img--hover',
+            alt: '' }}
+        {%- endif -%}
+      {%- else -%}
+        <div class="card__placeholder"></div>
+      {%- endif -%}
+
+      <div class="card__badges">
+        {%- unless product.available -%}<span class="badge badge--dark">{{ 'general.sold_out' | t }}</span>{%- endunless -%}
+        {%- if settings.show_condition and product.metafields.custom.condition != blank -%}
+          <span class="badge">{{ product.metafields.custom.condition }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="card__info">
+      {%- if settings.show_vendor and product.vendor != blank -%}
+        <p class="card__vendor">{{ product.vendor }}</p>
+      {%- endif -%}
+      <h3 class="card__title">{{ product.title }}</h3>
+      {% render 'price', product: product %}
+    </div>
+  </a>
+</article>
