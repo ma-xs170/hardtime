@@ -20,10 +20,11 @@ button, input, select { font: inherit; color: inherit; }
 
 .container { width: 100%; max-width: var(--page-width); margin-inline: auto; padding-inline: 20px; }
 .container--narrow { max-width: 780px; }
-.section { padding-block: 56px; }
+.section { padding-block: 72px; }
 .section--surface { background: var(--color-surface); }
+.section--surface .trust__item { border-color: var(--color-text); }
 .section__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
-.section__title { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 20px; }
+.section__title { font-size: clamp(1.8rem, 3.6vw, 3rem); letter-spacing: -0.035em; margin-bottom: 20px; }
 .section__head .section__title { margin-bottom: 0; }
 .eyebrow { font-size: 13px; color: var(--color-muted); margin-bottom: 8px; }
 .link { border-bottom: 1px solid currentColor; padding-bottom: 1px; font-size: 13px; }
@@ -87,7 +88,8 @@ button, input, select { font: inherit; color: inherit; }
 .badge--dark { background: var(--color-text); color: var(--color-bg); }
 .card__info { padding-top: 12px; }
 .card__vendor { font-size: 12px; color: var(--color-muted); margin-bottom: 2px; }
-.card__title { font-family: var(--font-body); font-weight: 500; font-size: 14px; letter-spacing: 0; margin-bottom: 4px; }
+.card__title { font-family: var(--font-body); font-weight: 500; font-size: 15px; letter-spacing: 0; margin-bottom: 4px; }
+.card__link { display: block; }
 .price { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: 14px; }
 .price__compare { color: var(--color-muted); font-size: 13px; }
 .price--sale .price__current { color: var(--color-signal); }
@@ -109,9 +111,10 @@ button, input, select { font: inherit; color: inherit; }
 .split__text .btn { margin-top: 20px; }
 
 /* Trust */
-.trust { display: grid; gap: 28px; grid-template-columns: repeat(2, 1fr); }
+.trust { display: grid; gap: 0 32px; grid-template-columns: repeat(2, 1fr); }
+.trust__item { border-top: 1px solid var(--color-text); padding-block: 16px 28px; }
 @media (min-width: 990px) { .trust { grid-template-columns: repeat(4, 1fr); } }
-.trust__title { font-family: var(--font-body); font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.trust__title { font-size: 1.15rem; letter-spacing: -0.02em; margin-bottom: 6px; }
 
 /* Newsletter */
 .newsletter__inner { text-align: center; max-width: 560px; }

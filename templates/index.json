@@ -14,7 +14,7 @@
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "b1": { "type": "item", "settings": { "title": "Authenticité garantie", "text": "Chaque pièce est vérifiée avant expédition." } },
+        "b1": { "type": "item", "settings": { "title": "Pièces uniques", "text": "Chaque article existe en un seul exemplaire." } },
         "b2": { "type": "item", "settings": { "title": "État détaillé", "text": "Photos réelles et grade d'état sur chaque article." } },
         "b3": { "type": "item", "settings": { "title": "Livraison assurée", "text": "Colis suivi et assuré, emballage soigné." } },
         "b4": { "type": "item", "settings": { "title": "Retours 14 jours", "text": "Un doute ? Renvoyez, remboursé." } }
