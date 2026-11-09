@@ -1,3 +1,19 @@
+{%- if section.settings.image != blank -%}
+<section class="hero hero--split">
+  <div class="hero__images{% if section.settings.image2 != blank %} hero__images--two{% endif %}">
+    {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1800', sizes: '(min-width: 750px) 50vw, 100vw', class: 'hero__photo' }}
+    {%- if section.settings.image2 != blank -%}
+      {{ section.settings.image2 | image_url: width: 1800 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1800', sizes: '(min-width: 750px) 50vw, 100vw', class: 'hero__photo' }}
+    {%- endif -%}
+  </div>
+  <div class="hero__overlay">
+    {%- if section.settings.label != blank -%}<p class="hero__label">{{ section.settings.label }}</p>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a class="btn btn--outline" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+{%- else -%}
 <section class="hero">
   <div class="container hero__grid">
     <div class="hero__content">
@@ -42,12 +58,15 @@
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Image (remplace le cadran)" },
+    { "type": "image_picker", "id": "image", "label": "Image gauche (plein écran, remplace le cadran)" },
+    { "type": "image_picker", "id": "image2", "label": "Image droite (optionnel)" },
+    { "type": "text", "id": "label", "label": "Texte sur l'image", "default": "Drop disponible" },
     { "type": "text", "id": "title", "label": "Titre", "default": "Il est temps de s'équiper." },
     { "type": "textarea", "id": "text", "label": "Texte", "default": "Montres et vêtements neufs, choisis un par un et livrés partout en Guadeloupe." },
     { "type": "text", "id": "button_label", "label": "Bouton 1", "default": "Voir les montres" },

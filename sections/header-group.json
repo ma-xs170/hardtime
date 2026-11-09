@@ -2,8 +2,8 @@
   "name": "En-tête",
   "type": "header",
   "sections": {
-    "announcement": { "type": "announcement-bar" },
-    "header": { "type": "header" }
+    "header": { "type": "header" },
+    "announcement": { "type": "announcement-bar" }
   },
-  "order": ["announcement", "header"]
+  "order": ["header", "announcement"]
 }

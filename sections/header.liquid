@@ -24,6 +24,11 @@
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="{{ 'general.search' | t }}">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </a>
+      {%- if shop.customer_accounts_enabled -%}
+      <a class="icon-btn" href="{{ routes.account_url }}" aria-label="Compte">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </a>
+      {%- endif -%}
       <a class="icon-btn header__cart" href="{{ routes.cart_url }}" aria-label="{{ 'general.cart' | t }}">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
         {%- if cart.item_count > 0 -%}<span class="header__count">{{ cart.item_count }}</span>{%- endif -%}

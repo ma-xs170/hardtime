@@ -10,8 +10,8 @@
   {
     "name": "Couleurs",
     "settings": [
-      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#f4f4f2" },
-      { "type": "color", "id": "color_surface", "label": "Surface (cartes, blocs)", "default": "#e8e9e5" },
+      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#ffffff" },
+      { "type": "color", "id": "color_surface", "label": "Surface (cartes, blocs)", "default": "#f3f3f1" },
       { "type": "color", "id": "color_text", "label": "Texte", "default": "#15171a" },
       { "type": "color", "id": "color_accent", "label": "Boutons", "default": "#15171a" },
       { "type": "color", "id": "color_signal", "label": "Accent (seconde du cadran, promos)", "default": "#1f3fd1" },
@@ -21,8 +21,8 @@
   {
     "name": "Typographie",
     "settings": [
-      { "type": "font_picker", "id": "font_heading", "label": "Titres", "default": "assistant_n7" },
-      { "type": "font_picker", "id": "font_body", "label": "Texte", "default": "assistant_n4" }
+      { "type": "font_picker", "id": "font_heading", "label": "Titres", "default": "space_mono_n4" },
+      { "type": "font_picker", "id": "font_body", "label": "Texte", "default": "space_mono_n4" }
     ]
   },
   {
@@ -31,7 +31,7 @@
       { "type": "range", "id": "page_width", "label": "Largeur max", "min": 1000, "max": 1800, "step": 50, "unit": "px", "default": 1400 },
       { "type": "range", "id": "radius", "label": "Arrondi", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 2 },
       { "type": "range", "id": "radius_button", "label": "Arrondi des boutons", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 24 },
-      { "type": "checkbox", "id": "gradients", "label": "Activer les dégradés", "default": true }
+      { "type": "checkbox", "id": "gradients", "label": "Activer les dégradés", "default": false }
     ]
   },
   {

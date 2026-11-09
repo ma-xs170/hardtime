@@ -8,13 +8,13 @@
     "close": "Fermer",
     "from": "À partir de",
     "sale": "Promo",
-    "sold_out": "Vendu",
+    "sold_out": "Épuisé",
     "continue_shopping": "Continuer mes achats",
-    "view_all": "Tout voir"
+    "view_all": "+Voir tout"
   },
   "product": {
     "add_to_cart": "Ajouter au panier",
-    "sold_out": "Vendu",
+    "sold_out": "Épuisé",
     "condition": "État",
     "shipping": "Livraison partout en Guadeloupe dès 15 €",
     "secure": "Paiement sécurisé"

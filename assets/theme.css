@@ -46,8 +46,6 @@ button, input, select { font: inherit; color: inherit; }
 .icon-btn { background: none; border: 0; padding: 8px; cursor: pointer; position: relative; display: inline-flex; }
 
 /* Announcement + header */
-.announcement__inner { display: inline-flex; align-items: center; gap: 8px; }
-.announcement { background: var(--color-text); color: var(--color-bg); text-align: center; font-size: 13px; padding: 8px 20px; }
 .header { position: sticky; top: 0; z-index: 50; background: var(--color-bg); border-bottom: 1px solid var(--color-line); }
 .header__inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 68px; }
 .header__logo { justify-self: center; grid-column: 2; }
@@ -202,7 +200,6 @@ button, input, select { font: inherit; color: inherit; }
 }
 .has-gradients .btn:not(.btn--ghost) { background: var(--grad-accent); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--color-accent) 70%, transparent); transition: opacity .2s, transform .2s, box-shadow .2s; }
 .has-gradients .btn:not(.btn--ghost):hover { opacity: 1; transform: translateY(-1px); box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--color-accent) 75%, transparent); }
-.has-gradients .announcement { background: var(--grad-signal); color: #fff; }
 .has-gradients .hero { background: radial-gradient(60% 70% at 85% 30%, color-mix(in srgb, var(--color-accent-signal) 14%, transparent) 0%, transparent 70%); }
 .has-gradients .hero__panel, .has-gradients .tile, .has-gradients .card__media, .has-gradients .split__media, .has-gradients .pdp__slide { background: var(--grad-surface); }
 .has-gradients .section--surface { background: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 60%, var(--color-bg)) 100%); }
@@ -228,8 +225,7 @@ button, input, select { font: inherit; color: inherit; }
   .hero__panel { animation: pop 1.1s .1s cubic-bezier(.2,.7,.2,1) both; }
 
   /* Announcement shimmer */
-  .has-gradients .announcement { background-size: 200% 100%; animation: drift 12s ease-in-out infinite alternate; }
-  @keyframes drift { from { background-position: 0 0; } to { background-position: 100% 0; } }
+    @keyframes drift { from { background-position: 0 0; } to { background-position: 100% 0; } }
 
   /* Button sheen */
   .has-gradients .btn:not(.btn--ghost) { position: relative; overflow: hidden; }
@@ -251,3 +247,66 @@ button, input, select { font: inherit; color: inherit; }
   .trust__item:hover .trust__icon { transform: translateY(-3px); }
   .trust__icon { transition: transform .3s; }
 }
+
+/* ===== Streetwear layout (inspired by reference) ===== */
+body { letter-spacing: 0; }
+h1, h2, h3, .section__title { letter-spacing: 0; text-transform: none; }
+.header { background: var(--color-bg); border-bottom: 0; }
+.has-gradients .header { background: var(--color-bg); backdrop-filter: none; }
+.header__wordmark { font-weight: 700; font-style: italic; letter-spacing: -0.04em; text-transform: lowercase; font-size: 1.7rem; }
+.header__nav a { text-transform: uppercase; font-size: 13px; }
+@media (min-width: 990px) {
+  .header__inner { display: flex; gap: 32px; }
+  .header__logo { grid-column: auto; justify-self: auto; }
+  .header__nav { grid-column: auto; grid-row: auto; justify-self: auto; }
+  .header__nav ul { gap: 24px; }
+  .header__actions { margin-left: auto; }
+}
+.container { max-width: var(--page-width); }
+
+/* Announcement marquee */
+.announcement { background: var(--ann-bg, #e10600); color: var(--ann-fg, #fff); padding: 0; overflow: hidden; font-size: 14px; text-transform: uppercase; white-space: nowrap; }
+.announcement a { display: block; }
+.announcement__track { display: flex; width: max-content; }
+.announcement__group { display: flex; flex-shrink: 0; }
+.announcement__item { display: inline-flex; align-items: center; gap: 10px; padding: 9px 40px; }
+@media (prefers-reduced-motion: no-preference) {
+  .announcement__track { animation: marquee var(--ann-speed, 30s) linear infinite; }
+  .announcement:hover .announcement__track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+}
+@media (prefers-reduced-motion: reduce) { .announcement__track { width: 100%; justify-content: center; } .announcement__group[aria-hidden] { display: none; } }
+
+/* Hero: full-bleed photos */
+.hero--split { padding: 0; position: relative; background: none; }
+.hero__images { display: grid; grid-template-columns: 1fr; }
+.hero__images--two { grid-template-columns: 1fr 1fr; }
+.hero__photo { width: 100%; height: min(82vh, 760px); min-height: 420px; object-fit: cover; max-width: none; }
+@media (max-width: 749px) { .hero__images--two { grid-template-columns: 1fr 1fr; } .hero__photo { height: 62vh; min-height: 320px; } }
+.hero__overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; color: #fff; text-align: center; pointer-events: none; }
+.hero__overlay > * { pointer-events: auto; }
+.hero__label { margin: 0; font-size: 14px; text-transform: uppercase; text-shadow: 0 1px 12px rgba(0,0,0,.45); }
+.btn--outline { background: transparent; border: 1px solid #fff; color: #fff; text-transform: uppercase; padding: 14px 26px; font-size: 14px; }
+.btn--outline:hover { background: #fff; color: #15171a; opacity: 1; }
+.has-gradients .hero--split { background: none; }
+
+/* Product grid: flat white, centered captions */
+.section__head { align-items: baseline; }
+.section__title { font-size: 1.75rem; }
+.link { border-bottom: 0; font-size: 14px; }
+.link:hover { text-decoration: underline; }
+.card__media, .has-gradients .card__media { background: var(--color-bg); border-radius: 0; }
+.card__img { object-fit: contain; }
+.card__badges { left: auto; right: 12px; top: 12px; }
+.badge, .badge--dark { background: var(--color-surface); color: var(--color-text); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+.card__info { text-align: center; padding-top: 18px; }
+.card__title { font-weight: 400; font-size: 14px; }
+.price { justify-content: center; }
+.has-gradients .card:hover .card__media { box-shadow: none; transform: none; }
+
+/* Minimal footer */
+.footer--min { border-top: 0; padding-top: 0; font-size: 13px; }
+.footer--min .footer__bottom { border-top: 0; margin-top: 24px; justify-content: flex-start; gap: 28px; }
+.footer__links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer__links a:hover { text-decoration: underline; }
+.footer__social { margin-left: auto; display: flex; gap: 16px; }

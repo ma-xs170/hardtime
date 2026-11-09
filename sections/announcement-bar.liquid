@@ -1,6 +1,12 @@
-<div class="announcement">
+{%- capture item -%}
+  <span class="announcement__item">{% render 'icon', name: 'truck', size: 16 %}<span>{{ section.settings.text }}</span></span>
+{%- endcapture -%}
+<div class="announcement" style="--ann-bg: {{ section.settings.bg }}; --ann-fg: {{ section.settings.fg }}; --ann-speed: {{ section.settings.speed }}s;">
   {%- if section.settings.link != blank -%}<a href="{{ section.settings.link }}">{%- endif -%}
-    <span class="announcement__inner">{% render 'icon', name: 'truck', size: 16 %}<span>{{ section.settings.text }}</span></span>
+    <div class="announcement__track">
+      <div class="announcement__group">{% for i in (1..6) %}{{ item }}{% endfor %}</div>
+      <div class="announcement__group" aria-hidden="true">{% for i in (1..6) %}{{ item }}{% endfor %}</div>
+    </div>
   {%- if section.settings.link != blank -%}</a>{%- endif -%}
 </div>
 
@@ -9,7 +15,10 @@
   "name": "Barre d'annonce",
   "settings": [
     { "type": "text", "id": "text", "label": "Texte", "default": "Livraison partout en Guadeloupe dès 15 €" },
-    { "type": "url", "id": "link", "label": "Lien" }
+    { "type": "url", "id": "link", "label": "Lien" },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#e10600" },
+    { "type": "color", "id": "fg", "label": "Texte", "default": "#ffffff" },
+    { "type": "range", "id": "speed", "label": "Durée d'un défilement", "min": 10, "max": 60, "step": 5, "unit": "s", "default": 30 }
   ],
   "presets": [{ "name": "Barre d'annonce" }]
 }
