@@ -15,7 +15,7 @@
       "type": "trust-badges",
       "blocks": {
         "b1": { "type": "item", "settings": { "icon": "tag", "title": "Produits neufs", "text": "Montres et vêtements neufs, choisis un par un." } },
-        "b2": { "type": "item", "settings": { "icon": "truck", "title": "Livraison en Guadeloupe", "text": "Nous livrons partout en Guadeloupe." } },
+        "b2": { "type": "item", "settings": { "icon": "truck", "title": "Livraison en Guadeloupe", "text": "Livraison partout en Guadeloupe dès 15 €." } },
         "b3": { "type": "item", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Réglez en ligne en toute sécurité." } }
       },
       "block_order": ["b1", "b2", "b3"]
