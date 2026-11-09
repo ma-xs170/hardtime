@@ -52,7 +52,9 @@
         {%- paginate collection.products by 24 -%}
           <div class="grid grid--3">
             {%- for product in collection.products -%}
-              {% render 'product-card', product: product, eager: forloop.index0 < 4 %}
+              {%- assign eager = false -%}
+              {%- if forloop.index0 < 4 -%}{%- assign eager = true -%}{%- endif -%}
+              {% render 'product-card', product: product, eager: eager %}
             {%- else -%}
               <p>{{ 'collection.empty' | t }}</p>
             {%- endfor -%}
