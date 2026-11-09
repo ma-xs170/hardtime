@@ -1,5 +1,21 @@
 (() => {
 
+  // Scroll reveal + staggered children (skipped when reduced motion)
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm && 'IntersectionObserver' in window) {
+    const groups = ['.trust', '.grid', '.tiles', '.collection-tiles'];
+    document.querySelectorAll('.section .section__head, .section .section__title, .split__text, .split__media, .newsletter .container').forEach((el) => el.setAttribute('data-reveal', ''));
+    document.querySelectorAll(groups.join(',')).forEach((g) => {
+      Array.from(g.children).forEach((c, i) => { c.setAttribute('data-reveal', ''); c.style.setProperty('--d', (i % 6) * 80 + 'ms'); });
+    });
+    const items = document.querySelectorAll('[data-reveal]');
+    document.documentElement.classList.add('js-reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach((el) => io.observe(el));
+  }
+
   // Hero dial: live local time
   const dial = document.querySelector('[data-dial]');
   if (dial) {
