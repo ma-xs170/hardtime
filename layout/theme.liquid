@@ -42,7 +42,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="template-{{ template.name }}">
+  <body class="template-{{ template.name }}{% if settings.gradients %} has-gradients{% endif %}">
     <a class="skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
 
     {% sections 'header-group' %}
