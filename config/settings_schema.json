@@ -10,11 +10,12 @@
   {
     "name": "Couleurs",
     "settings": [
-      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#ffffff" },
-      { "type": "color", "id": "color_surface", "label": "Surface (cartes, blocs)", "default": "#f5f4f1" },
-      { "type": "color", "id": "color_text", "label": "Texte", "default": "#111111" },
-      { "type": "color", "id": "color_accent", "label": "Accent (boutons)", "default": "#111111" },
-      { "type": "color", "id": "color_accent_text", "label": "Texte sur accent", "default": "#ffffff" }
+      { "type": "color", "id": "color_bg", "label": "Fond", "default": "#f4f4f2" },
+      { "type": "color", "id": "color_surface", "label": "Surface (cartes, blocs)", "default": "#e8e9e5" },
+      { "type": "color", "id": "color_text", "label": "Texte", "default": "#15171a" },
+      { "type": "color", "id": "color_accent", "label": "Boutons", "default": "#15171a" },
+      { "type": "color", "id": "color_signal", "label": "Accent (seconde du cadran, promos)", "default": "#1f3fd1" },
+      { "type": "color", "id": "color_accent_text", "label": "Texte sur accent", "default": "#f4f4f2" }
     ]
   },
   {
@@ -28,7 +29,7 @@
     "name": "Mise en page",
     "settings": [
       { "type": "range", "id": "page_width", "label": "Largeur max", "min": 1000, "max": 1800, "step": 50, "unit": "px", "default": 1400 },
-      { "type": "range", "id": "radius", "label": "Arrondi", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 0 }
+      { "type": "range", "id": "radius", "label": "Arrondi", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 2 }
     ]
   },
   {

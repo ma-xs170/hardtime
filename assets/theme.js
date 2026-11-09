@@ -1,4 +1,26 @@
 (() => {
+
+  // Hero dial: live local time
+  const dial = document.querySelector('[data-dial]');
+  if (dial) {
+    const h = dial.querySelector('[data-hand="h"]');
+    const m = dial.querySelector('[data-hand="m"]');
+    const sec = dial.querySelector('[data-hand="s"]');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rot = (el, deg) => el.setAttribute('transform', 'rotate(' + deg + ' 100 100)');
+    const tick = () => {
+      const d = new Date();
+      const s = d.getSeconds();
+      const min = d.getMinutes() + s / 60;
+      rot(h, ((d.getHours() % 12) + min / 60) * 30);
+      rot(m, min * 6);
+      rot(sec, s * 6);
+    };
+    tick();
+    if (reduce) { sec.setAttribute('display', 'none'); setInterval(tick, 60000); }
+    else setInterval(tick, 1000);
+  }
+
   // Mobile menu
   const toggle = document.querySelector('[data-menu-toggle]');
   const nav = document.querySelector('[data-nav]');
