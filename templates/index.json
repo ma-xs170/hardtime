@@ -14,12 +14,11 @@
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "b1": { "type": "item", "settings": { "title": "Pièces uniques", "text": "Chaque article existe en un seul exemplaire." } },
-        "b2": { "type": "item", "settings": { "title": "État détaillé", "text": "Photos réelles et grade d'état sur chaque article." } },
-        "b3": { "type": "item", "settings": { "title": "Livraison assurée", "text": "Colis suivi et assuré, emballage soigné." } },
-        "b4": { "type": "item", "settings": { "title": "Retours 14 jours", "text": "Un doute ? Renvoyez, remboursé." } }
+        "b1": { "type": "item", "settings": { "icon": "tag", "title": "Produits neufs", "text": "Montres et vêtements neufs, choisis un par un." } },
+        "b2": { "type": "item", "settings": { "icon": "truck", "title": "Livraison en Guadeloupe", "text": "Nous livrons partout en Guadeloupe." } },
+        "b3": { "type": "item", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Réglez en ligne en toute sécurité." } }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": ["b1", "b2", "b3"]
     }
   },
   "order": ["hero", "tiles", "featured", "story", "trust"]

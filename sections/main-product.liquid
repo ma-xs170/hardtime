@@ -59,8 +59,8 @@
     {%- endform -%}
 
     <ul class="pdp__perks">
-      <li>{{ 'product.shipping' | t }}</li>
-      <li>{{ 'product.returns' | t }}</li>
+      <li>{% render 'icon', name: 'truck', size: 20 %}<span>{{ 'product.shipping' | t }}</span></li>
+      <li>{% render 'icon', name: 'lock', size: 20 %}<span>{{ 'product.secure' | t }}</span></li>
     </ul>
 
     {%- if product.description != blank -%}

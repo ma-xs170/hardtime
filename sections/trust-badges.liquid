@@ -2,6 +2,7 @@
   <div class="container trust">
     {%- for block in section.blocks -%}
       <div class="trust__item" {{ block.shopify_attributes }}>
+        <span class="trust__icon">{% render 'icon', name: block.settings.icon, size: 28 %}</span>
         <h3 class="trust__title">{{ block.settings.title }}</h3>
         <p class="muted">{{ block.settings.text }}</p>
       </div>
@@ -17,8 +18,14 @@
       "type": "item",
       "name": "Argument",
       "settings": [
-        { "type": "text", "id": "title", "label": "Titre", "default": "Pièces uniques" },
-        { "type": "textarea", "id": "text", "label": "Texte", "default": "Chaque article existe en un seul exemplaire." }
+        { "type": "select", "id": "icon", "label": "Icône", "default": "check", "options": [
+          { "value": "check", "label": "Coche" }, { "value": "truck", "label": "Livraison" },
+          { "value": "box", "label": "Colis" }, { "value": "lock", "label": "Cadenas" },
+          { "value": "tag", "label": "Étiquette" }, { "value": "watch", "label": "Montre" },
+          { "value": "shirt", "label": "Vêtement" }
+        ]},
+        { "type": "text", "id": "title", "label": "Titre", "default": "Produits neufs" },
+        { "type": "textarea", "id": "text", "label": "Texte", "default": "Montres et vêtements neufs, choisis un par un." }
       ]
     }
   ],
@@ -26,10 +33,9 @@
   "presets": [{
     "name": "Réassurance",
     "blocks": [
-      { "type": "item", "settings": { "title": "Pièces uniques", "text": "Chaque article existe en un seul exemplaire." } },
-      { "type": "item", "settings": { "title": "État détaillé", "text": "Photos réelles et grade d'état sur chaque article." } },
-      { "type": "item", "settings": { "title": "Livraison assurée", "text": "Colis suivi et assuré, emballage soigné." } },
-      { "type": "item", "settings": { "title": "Retours 14 jours", "text": "Un doute ? Renvoyez, remboursé." } }
+      { "type": "item", "settings": { "icon": "tag", "title": "Produits neufs", "text": "Montres et vêtements neufs, choisis un par un." } },
+      { "type": "item", "settings": { "icon": "truck", "title": "Livraison en Guadeloupe", "text": "Nous livrons partout en Guadeloupe." } },
+      { "type": "item", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Réglez en ligne en toute sécurité." } }
     ]
   }]
 }

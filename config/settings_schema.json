@@ -43,9 +43,9 @@
   {
     "name": "Revente",
     "settings": [
-      { "type": "header", "content": "Badges d'état" },
+      { "type": "header", "content": "Badges" },
       { "type": "paragraph", "content": "Créez le metafield produit `custom.condition` (texte) : Neuf, Comme neuf, Très bon état, Bon état." },
-      { "type": "checkbox", "id": "show_condition", "label": "Afficher l'état sur les cartes produit", "default": true },
+      { "type": "checkbox", "id": "show_condition", "label": "Afficher l'état sur les cartes produit", "default": false },
       { "type": "checkbox", "id": "show_vendor", "label": "Afficher la marque sur les cartes produit", "default": true },
       { "type": "checkbox", "id": "show_savings", "label": "Afficher le % de réduction", "default": true }
     ]
